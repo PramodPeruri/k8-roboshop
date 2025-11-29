@@ -26,4 +26,15 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: peruripramod/mongodb:v1
+        image: peruripramod/mongodb:v1   
+        imagePullPolicy: Always
+        readinessProbe:
+          tcpSocket:
+            port: 27017
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 27017
+          initialDelaySeconds: 5
+          periodSeconds: 5
